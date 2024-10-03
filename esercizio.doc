@@ -1,0 +1,10 @@
+ESERCITAZIONE
+
+Rivedere la lezione
+Ripetere l’esercizio del controllo password visto a lezione (da soli o rivedendo il video)
+Implementare un metodo che faccia reinserire la password qualora anche una delle regole non fosse rispettate e che, invece, lo interrompa in caso di password accettata
+visualizzare in console quale regola non è stata rispettata
+se le regole sono tutte rispettate dare output visivo all'utente "Password accettata"
+
+
+pushare tutto su github php_02_nome_cognome
