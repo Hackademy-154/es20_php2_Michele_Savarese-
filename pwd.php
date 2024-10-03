@@ -8,10 +8,11 @@
 function lunghezza($stringa){
     $pwdLength = false;
     if (strlen($stringa)>=8) {
-        $pwdLength = true;
+        return  $pwdLength = true;
     } else {
         $pwdLength = $pwdLength;
-    }var_dump($pwdLength);
+    } echo "La lunghezza della password è inferiore ad 8 caratteri \n";
+// var_dump($pwdLength);
 
 }
 
@@ -20,11 +21,12 @@ function maiuscolo($stringa)
 {    $pwdCaps = false;
     for ($i=0; $i<strlen($stringa); $i++) {
         if (ctype_upper($stringa[$i]) == true) {
-            $pwdCaps = true;
+            return   $pwdCaps = true;
         } else {
             $pwdCaps = $pwdCaps;
         }
-    }    var_dump($pwdCaps);
+    } echo "La password deve avere almeno 1 carattere maiuscolo.\n";
+    // var_dump($pwdCaps);
 
 }
 
@@ -32,48 +34,62 @@ function numero($stringa)
 {    $pwdNum = false;
     for ($i=0; $i<strlen($stringa); $i++) {
         if (is_numeric($stringa[$i]) == true) {
-            $pwdNum = true;
+            return $pwdNum = true;
         } else {
             $pwdNum = $pwdNum;
         }
-    }    var_dump($pwdNum);
+    }
+    echo "La password deve avere almeno 1 numero. \n";
+    //  var_dump($pwdNum);
 }
 
 function speciale($stringa)
 
 {
-    $speciali=['£', '$', '%', '&'];
+    $specials = ['!', '@', '#', '$'];
 
     $pwdSpecial = false;
     for ($i=0; $i<strlen($stringa); $i++) {
-        if (in_array($stringa[$i] , $speciali) == true) {
-            $pwdSpecial = true;
+        if (in_array($stringa[$i], $specials) == true) {
+           return $pwdSpecial = true;
         } else {
             $pwdSpecial = $pwdSpecial;
         }
-    }    var_dump($pwdSpecial);
+    }
+    echo "La password deve avere almeno un carattere speciale. (!,@,#,$) \n";
+    // var_dump($pwdSpecial);
 }
 
 
 
 
-// function pwd($stringa){
+function checkPassword($stringa){
+$pwd = false;
 
-// if ($pwdLength && $pwdCaps && $pwdNum && $pwdSpecial) {
-// echo"password accettata";
+    $pwdLengt= lunghezza($stringa);
+    $pwdCap=maiuscolo($stringa);
+    $pwdNu=numero($stringa);
+    $pwdSpecia=speciale($stringa);
 
-// } else {
-// echo"password non conforme";
-// }
+    if ($pwdLengt == true && $pwdCap == true && $pwdNu == true && $pwdSpecia == true) {
+        echo"password conforme";
+        $pwd = true;
 
-// }
+    } else {
+        echo"password non conforme \n";
 
-// pwd("Bellac1ao£");
+    }
+
+}
+
+// checkPassword("Bellac1ao#");
 
 
-lunghezza("Bellac1ao£");
-maiuscolo("Bellac1ao£");
-numero("Bellac1ao£");
-speciale("Bellac1ao£");
+$index = 0;
+
+do {
+    $pwd = readline('Inserire la password: ');
+    $index++;
+} while (checkPassword($pwd) == false && $index < 3);
 
 ?>
